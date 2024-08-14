@@ -45,10 +45,22 @@ If you try to build one youself, don't expect it to work on the first try. You w
 |name|purpose|properties|amount|source|
 |---|---|---|---|---|
 |wax|coating the high voltage part and the gap in the transformer to avoid corona discharge in the gap between the transformer and the secondary winding|not brittle at room temperature (arcs can jump through cracks)|depends on the size of your circuit, ~150ml should be enough |candle wax idealy mixed with some sort of soft wax like bees wax, I used wax collected from the shell of cheese|
+|plastic sheet|contain the wax and the voltage multiplier|Must be a thick thermoplastic like the one of a drinking bottle in order to provide insulation|Length of your multiplier and wide enough to wrap 2-3 times around it. Approximately 30cmx30cm|Package of childrens toy, sheets for laminating paper, ...|
 ### Step 2: Assemble the circuit
+#### ZVS driver
+This part converts the 8V DC into 10-15V AC at 20-30kHz.
+First, come up with a layout for all components, so that they fit into the case. I prepared the MOSFETs by adding the heatsink (Because I had smd ones, I soldered them on to a small sheet of copper foil), the zener diode and a thick piece of copper wire which forms the two rails of the resonant circuit. Then I put both MOSFET assemblys on top of each other faceing the same direction in order to make connecting ground easier. Connecting ground and the two diodes D1 and D2 holds everything together and the resistors can be added. Next, I soldered the resonance capacitors and the primary coil to the two rails. This is the part must be soldered very well, because it will conduct high current of around 10A. Be aware that one capacitor (can also be an additional small 50nF one) must be connected very close to the MOSFETs in order avoid some sort of ringing when the MOSFETs switch. Next, attach the switch with a short wire and solder the button on to a tiny pcb that fits in the slot in the case and connect the pcb with wires to the rest. For the power connector, just crimp the negative wire, the positive wire and a very small loop in to a connector.
+#### Voltage multiplier
+First, I soldered the diodes in series to form the 20kV diodes. Check if no diodes are backwards! I repeatedly placed a diode and a capacitor turning every second one 180° to form the multiplier. ![Voltage Multiplier1](https://github.com/user-attachments/assets/390f7ce2-3f91-4184-b1cd-d64da38c05a7)
+Then wrap the circuit in the plastic sheet and check where it touches the plastic and where you can make the circuit smaller.
+#### Battery pack
+Since I put two Li-Ion batteries in paralell, it is important to balance them before connecting them. For that I measured the voltage difference between two cells and connected both negative sides together and used a resistor to connect the positive side. Calculate this resistance based on the maximum charge current and the voltage difference of your batteries. Be aware of wire resistance. I let them sit a few days checking and drecreasing the resistance regularely until the voltage is almost equal and the internal resistance of the batteries is enough to do balance the rest. After creating pairs of batteries, take two pairs, put them side by side in a square, so that all negative are on one side with a negative wire for each pair going through the center to the positive side and wrap electrical tape around to hold them together. Connect two wires for positive each and crimp the battery connector on these four wires. Pay special attention not to short anything!
+#### Battery charger
+crimp the diode leads and the negative wire in to a connector and join the other side of the diodes to the positive wire. Ajust the power supply to your charging current and a Voltage of 4.2 Volts. After connecting the battery, you can measure the current and the voltage drop across the diodes when only 1mA is flowing. Set no more than this Voltage + 4.2V to the Voltage limit of your power supply.
 ### Step 3: Test the circuit and ajust frequency and power of the oscillator
-### Step 4: Pot the high voltage parts
+### Step 4: Potting the high voltage parts
 ### Step 5: Ajust the 3d models to fit your build
 ### Step 6: Final Assembly
 ### Step 7: Make the battery pack
 ### Step 8: Make the charger
+
